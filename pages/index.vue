@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-24 14:56:50
+ * @LastEditTime: 2021-08-24 15:00:44
 -->
 <template>
   <div class="container">
@@ -81,6 +81,7 @@
               Done
             </button>
             <button
+            @click="removeTodo(todo.id)"
               class="
                 flex-no-shrink
                 bg-indigo-500
@@ -123,6 +124,9 @@ export default {
         title: this.new_todo,
       };
       return this.$store.dispatch("todo/addTodo", tempData);
+    },
+    removeTodo(id) {
+      return this.$store.dispatch("todo/removeTodo", id);
     },
   },
 };
