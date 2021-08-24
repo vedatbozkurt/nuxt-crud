@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-24 14:44:26
+ * @LastEditTime: 2021-08-24 14:56:50
 -->
 <template>
   <div class="container">
@@ -24,6 +24,7 @@
           <h1 class="text-grey-darkest">Todo List</h1>
           <div class="flex mt-4">
             <input
+              v-model="new_todo"
               class="
                 shadow
                 appearance-none
@@ -38,6 +39,7 @@
               placeholder="Add Todo"
             />
             <button
+              @click="addTodo()"
               class="
                 flex-no-shrink
                 p-2
@@ -54,10 +56,13 @@
           </div>
         </div>
         <div>
-          <div class="flex mb-4 items-center"
-          v-for="todo in todoList" :key="todo.id">
+          <div
+            class="flex mb-4 items-center"
+            v-for="todo in todoList"
+            :key="todo.id"
+          >
             <p class="w-full text-grey-darkest">
-              {{ todo.title}}
+              {{ todo.title }}
             </p>
             <button
               class="
@@ -78,6 +83,7 @@
             <button
               class="
                 flex-no-shrink
+                bg-indigo-500
                 p-2
                 ml-2
                 border-2
@@ -99,11 +105,25 @@
 
 <script>
 export default {
-  computed : {
+  data() {
+    return {
+      new_todo: "yeni not",
+    };
+  },
+  computed: {
     todoList() {
       return this.$store.getters["todo/todoList"];
       // return this.$store.state.todo.todoList;
-    }
-  }
+    },
+  },
+  methods: {
+    addTodo() {
+      let tempData = {
+        id: this.todoList.length + 1,
+        title: this.new_todo,
+      };
+      return this.$store.dispatch("todo/addTodo", tempData);
+    },
+  },
 };
 </script>
