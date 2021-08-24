@@ -1,3 +1,10 @@
+/*
+ * @Author: @vedatbozkurt
+ * @Email: info@wedat.org
+ * @Date: 2021-08-24 15:04:39
+ * @LastEditors: @vedatbozkurt
+ * @LastEditTime: 2021-08-24 15:05:24
+ */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -22,6 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    "~/plugins/axios.js",
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -35,6 +43,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
