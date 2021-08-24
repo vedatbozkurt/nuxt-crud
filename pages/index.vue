@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-24 15:00:44
+ * @LastEditTime: 2021-08-24 15:07:07
 -->
 <template>
   <div class="container">
@@ -129,5 +129,8 @@ export default {
       return this.$store.dispatch("todo/removeTodo", id);
     },
   },
+  created() {
+    this.$store.dispatch("todo/getTodoList");
+  }
 };
 </script>
