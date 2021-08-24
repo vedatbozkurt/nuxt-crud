@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-24 14:28:41
+ * @LastEditTime: 2021-08-24 14:44:26
 -->
 <template>
   <div class="container">
@@ -54,9 +54,10 @@
           </div>
         </div>
         <div>
-          <div class="flex mb-4 items-center">
+          <div class="flex mb-4 items-center"
+          v-for="todo in todoList" :key="todo.id">
             <p class="w-full text-grey-darkest">
-              Add another component to Tailwind Components
+              {{ todo.title}}
             </p>
             <button
               class="
@@ -90,42 +91,6 @@
               Remove
             </button>
           </div>
-          <div class="flex mb-4 items-center">
-            <p class="w-full line-through text-green">
-              Submit Todo App Component to Tailwind Components
-            </p>
-            <button
-              class="
-                flex-no-shrink
-                p-2
-                ml-4
-                mr-2
-                border-2
-                rounded
-                hover:text-white
-                text-grey
-                border-grey
-                hover:bg-grey
-              "
-            >
-              Not Done
-            </button>
-            <button
-              class="
-                flex-no-shrink
-                p-2
-                ml-2
-                border-2
-                rounded
-                text-red
-                border-red
-                hover:text-white
-                hover:bg-red
-              "
-            >
-              Remove
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -133,5 +98,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed : {
+    todoList() {
+      return this.$store.getters["todo/todoList"];
+      // return this.$store.state.todo.todoList;
+    }
+  }
+};
 </script>
