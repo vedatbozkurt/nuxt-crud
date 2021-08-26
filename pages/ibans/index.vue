@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 15:20:57
+ * @LastEditTime: 2021-08-26 15:24:58
 -->
 <template>
     <div class="w-2/3 mx-auto">
@@ -39,10 +39,10 @@ export default {
         }
     },
     created() {
-        const data = { email: this.email, password: this.password }
-        this.$axios.post('/login', data).then(function (response) {
-            console.log(response.data)
-        })
+        // const data = { email: this.email, password: this.password }
+        // this.$axios.post('/login', data).then(function (response) {
+        //     console.log(response.data)
+        // })
   }
 }
 </script>
