@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:47:32
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 18:29:44
+ * @LastEditTime: 2021-08-26 20:07:32
 -->
 <template lang="html">
   <div class="container">         
@@ -26,6 +26,7 @@ import { mapActions } from "vuex";
 
 export default {
 middleware: 'guest',
+// middleware: 'guest',
   data() {
     return {
       form: {

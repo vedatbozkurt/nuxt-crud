@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 18:22:32
+ * @LastEditTime: 2021-08-26 20:04:45
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
