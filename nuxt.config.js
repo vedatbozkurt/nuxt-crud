@@ -3,12 +3,12 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-24 15:05:24
+ * @LastEditTime: 2021-08-26 14:55:27
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxtCrud',
+    title: 'Nuxt Crud Project',
     htmlAttrs: {
       lang: 'en'
     },

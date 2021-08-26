@@ -3,14 +3,8 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:31:22
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-24 15:00:59
+ * @LastEditTime: 2021-08-26 14:45:48
  */
-export const MUTATIONS = {
-    SET_TODO: 'SET_TODO',
-    ADD_TODO: 'ADD_TODO',
-    REMOVE_TODO: 'REMOVE_TODO',
-}
-
 export const state = () => ({
     todoList: [
         {
@@ -29,13 +23,13 @@ export const state = () => ({
 })
 
 export const mutations = {
-    [MUTATIONS.SET_TODO](state, todo) {
+    SET_TODO(state, todo) {
         state.todoList = todo
     },
-    [MUTATIONS.ADD_TODO](state, item) {
+    ADD_TODO(state, item) {
         state.todoList.push(item)
     },
-    [MUTATIONS.REMOVE_TODO](state, id) {
+    REMOVE_TODO(state, id) {
         const itemIndex = state.todoList.findIndex((i) => i.id === id)
         state.todoList.splice(itemIndex, 1)
     }
@@ -44,13 +38,13 @@ export const mutations = {
 export const actions = {
     async getTodoList({ commit }) {
         const { data: todo } = await this.$axios.get(`https://jsonplaceholder.typicode.com/todos`)
-        commit(MUTATIONS.SET_TODO, todo)
+        commit('SET_TODO', todo)
     },
     addTodo({ commit }, item) {
-        commit(MUTATIONS.ADD_TODO, item)
+        commit('ADD_TODO', item)
     },
     removeTodo({ commit }, id) {
-        commit(MUTATIONS.REMOVE_TODO, id)
+        commit('REMOVE_TODO', id)
     }
 }
 
