@@ -3,14 +3,13 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 17:30:36
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 19:20:20
+ * @LastEditTime: 2021-08-27 00:07:18
 -->
 <template>
     <div>
-        üst: 
+      <p>üst</p>
         <!-- {{ authToken }} -->
         <nuxt />
-        alt
     </div>
 </template>
 
@@ -22,6 +21,7 @@ export default {
     // }
   },
   mounted() {
+    console.log('calistim')
     // this.$store.commit("auth/setLocalStorageToken");
   },
 }

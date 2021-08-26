@@ -3,9 +3,11 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 20:04:45
+ * @LastEditTime: 2021-08-27 00:29:26
  */
 export default {
+  ssr: true,
+  target: 'server',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Nuxt Crud Project',
@@ -44,6 +46,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
 
   //Axios module configuration

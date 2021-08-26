@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 16:20:55
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 21:09:45
+ * @LastEditTime: 2021-08-27 00:38:18
  */
 export const state = () => ({
     user: null,
@@ -33,7 +33,7 @@ export const actions = {
             .then(function (resp) {
                 commit('storeUser', resp.data.data.name)
                 commit('setToken', resp.data.data.token)
-                localStorage.setItem('authToken', resp.data.data.token)
+                // localStorage.setItem('authToken', resp.data.data.token)
         })
     },
     async logout({ commit }, details) {
@@ -51,9 +51,9 @@ export const mutations = {
     },
     setToken (state, data) {
         state.authToken = data
-        // console.log(state.authToken);
+        this.$cookies.set('authToken', data, { path: '/', maxAge: 60 * 60 * 24 * 7 })
     },
-    setLocalStorageToken(state){
-            state.authToken = localStorage.getItem('authToken') ? localStorage.getItem('authToken') : null;
+    checkToken(state){
+        state.authToken = this.$cookies.get('authToken') ? this.$cookies.get('authToken') : null;
     }
   }
