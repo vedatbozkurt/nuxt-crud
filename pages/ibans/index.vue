@@ -3,11 +3,14 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 20:08:16
+ * @LastEditTime: 2021-08-26 20:50:26
 -->
 <template>
     <div class="w-2/3 mx-auto">
   <div class="bg-white shadow-md rounded my-6">
+    <NuxtLink to="/ibans/create">
+      add iban
+    </NuxtLink>
     <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
       <thead>
         <tr>

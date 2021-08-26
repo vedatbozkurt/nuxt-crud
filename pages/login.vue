@@ -3,9 +3,9 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:47:32
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 20:07:32
+ * @LastEditTime: 2021-08-26 20:44:56
 -->
-<template lang="html">
+<template>
   <div class="container">         
     <div class="w-screen h-screen flex justify-center items-center bg-gray-100">
 		<form class="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">

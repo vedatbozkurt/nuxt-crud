@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:24:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 15:34:19
+ * @LastEditTime: 2021-08-26 21:02:23
  */
 export const state = () => ({
     ibans: [],
@@ -21,19 +21,19 @@ export const getters = {
 
 export const actions = {
     async fetchIbans({ commit }) {
-        const response = await this.$axios.get('/ibans');
+        const response = await this.$axios.get('/iban');
         commit('setIbans', response.data);
     },
-    async addIban({ commit }, iban) {
-        const response = await this.$axios.post('/ibans/create', iban);
+    async addIban({ commit, state }, iban) {
+        const response = await this.$axios.post('/iban/store', iban);
         commit('newIban', response.data);
     },
     async fetchIban({ commit }, ibanid) {
-        const response = await this.$axios.get(`/ibans/edit/${ibanid}`);
+        const response = await this.$axios.get(`/iban/edit/${ibanid}`);
         commit('setIban', response.data);
     },
     async updateIban({ commit }, iban) {
-        const response = await this.$axios.put(`/ibans/update/${iban.id}`, iban);
+        const response = await this.$axios.put(`/iban/update/${iban.id}`, iban);
         // console.log(response.data);
         commit('updateSingleIban', response.data);
     },
