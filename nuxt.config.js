@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 15:07:23
+ * @LastEditTime: 2021-08-26 15:41:30
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -43,10 +43,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
 
-  
+  auth: {
+    // Options
+  },
+    
   //Axios module configuration
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
