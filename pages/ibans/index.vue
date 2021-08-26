@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 15:45:34
+ * @LastEditTime: 2021-08-26 16:20:36
 -->
 <template>
     <div class="w-2/3 mx-auto">
@@ -31,7 +31,6 @@
 
 <script>
 export default {
-    middleware: 'auth',
     data() {
         return {
             url:'test url',
