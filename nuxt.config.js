@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 14:55:27
+ * @LastEditTime: 2021-08-26 15:07:23
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -45,6 +45,14 @@ export default {
   modules: [
     '@nuxtjs/axios'
   ],
+
+  
+  //Axios module configuration
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: process.env.USER_BACKEND_ENDPOINT
+  },   
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
