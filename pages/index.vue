@@ -3,10 +3,16 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-24 15:07:07
+ * @LastEditTime: 2021-08-26 17:38:52
 -->
 <template>
   <div class="container">
+    <NuxtLink to="/login">
+      login
+    </NuxtLink>
+     <NuxtLink to="/ibans">
+      ibans
+    </NuxtLink>
     <!-- component -->
     <div
       class="

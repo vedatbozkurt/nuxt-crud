@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:47:32
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 16:20:31
+ * @LastEditTime: 2021-08-26 18:29:44
 -->
 <template lang="html">
   <div class="container">         
@@ -15,14 +15,17 @@
 			<p class="mb-5 text-3xl uppercase text-gray-600">Login</p>
 			<input type="email" v-model="form.email" class="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Email" required>
 			<input type="password" v-model="form.password" class="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none" autocomplete="off" placeholder="Password" required>
-			<button class="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" id="login" @click="login"><span>Login</span></button>
+			<button class="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" type="button" @click="sendLoginRequest"><span>Login</span></button>
 		</form>
 	</div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
+middleware: 'guest',
   data() {
     return {
       form: {
@@ -31,10 +34,16 @@ export default {
       },
     }
   },
+  created() {
+    //   this.sendLoginRequest();
+  },
   methods: {
-    async login() {
-    
-    }
+    ...mapActions("auth", ["loginUser"]),
+    sendLoginRequest: function() {
+      this.loginUser(this.form).then(() => {
+        this.$router.push('/')
+      });
   }
+}
 }
 </script>
