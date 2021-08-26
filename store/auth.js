@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 16:20:55
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 17:31:05
+ * @LastEditTime: 2021-08-26 19:01:27
  */
 export const state = () => ({
     user: null,
@@ -13,6 +13,9 @@ export const state = () => ({
 export const getters = {
     getUser: (state) => {
         return state.user
+    },
+    getToken: (state) => {
+        return state.authToken
     }
 }
 export const actions = {
@@ -29,8 +32,9 @@ export const actions = {
         this.$axios.post('/login', details)
             .then(function (resp) {
                 commit('storeUser', resp.data.data.name)
-                commit('storeToken', resp.data.data.token)
-            })
+                commit('setToken', resp.data.data.token)
+                localStorage.setItem('authToken', resp.data.data.token)
+        })
     },
     async logout({ commit }, details) {
         await this.$axios.post('/logout', details)
@@ -45,8 +49,11 @@ export const mutations = {
     storeUser (state, data) {
       state.user = data
     },
-    storeToken (state, data) {
+    setToken (state, data) {
         state.authToken = data
         // console.log(state.authToken);
+    },
+    setLocalStorageToken(state){
+            state.authToken = localStorage.getItem('authToken') ? localStorage.getItem('authToken') : null;
     }
   }
