@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:05:28
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-26 21:14:45
+ * @LastEditTime: 2021-08-27 01:06:36
  */
 export default function ({ store, app: { $axios, localePath }, redirect }) {
     $axios.onRequest(config => {

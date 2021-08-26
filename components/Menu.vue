@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-27 00:40:32
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 00:44:26
+ * @LastEditTime: 2021-08-27 01:09:56
 -->
 <template>
     <nav id="header" class="w-full z-30 py-1 bg-white shadow-lg border-b border-blue-400">
@@ -27,11 +27,29 @@
          
          <div class="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
             <div class="auth flex items-center w-full md:w-full">
-               <NuxtLink to="/login" class="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Sign in</NuxtLink>
+               <NuxtLink v-if="!this.$store.state.auth.authToken" to="/login" class="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Sign in</NuxtLink>
 
-               <NuxtLink to="/login" class="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100">Logout</NuxtLink>
+               <button v-if="this.$store.state.auth.authToken" @click="sendLogoutRequest" class="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100">Logout</button>
             </div>
          </div>
       </div>
    </nav>
 </template>
+<script>
+import { mapActions } from 'vuex'
+export default {
+    methods: {
+    ...mapActions("auth", ["logout"]),
+    sendLogoutRequest() {
+      this.logout();
+      this.$router.push("/");
+        }
+    },
+    mounted() {
+        console.log(this.$store.state.auth.authToken)
+    // if (this.$cookies.get('authToken')) {
+    //   console.log('dans')
+    // }
+  },
+}
+</script>

@@ -3,13 +3,12 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 17:30:36
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 00:45:02
+ * @LastEditTime: 2021-08-27 00:58:05
 -->
 <template>
     <div>
         <Menu />
-        <!-- {{ authToken }} -->
-        <nuxt />
+        <Nuxt />
     </div>
 </template>
 

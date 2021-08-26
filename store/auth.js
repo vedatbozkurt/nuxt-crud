@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 16:20:55
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 00:40:00
+ * @LastEditTime: 2021-08-27 01:07:09
  */
 export const state = () => ({
     user: null,
@@ -13,9 +13,6 @@ export const state = () => ({
 export const getters = {
     getUser: (state) => {
         return state.user
-    },
-    getToken: (state) => {
-        return state.authToken
     }
 }
 export const actions = {
@@ -36,11 +33,11 @@ export const actions = {
                 // localStorage.setItem('authToken', resp.data.data.token)
         })
     },
-    async logout({ commit }, details) {
-        await this.$axios.post('/logout', details)
+    async logout({ commit }) {
+        await this.$axios.post('/logout')
             .then(function () {
                 commit('storeUser', null)
-                commit('setToken', null)
+                commit('removeToken')
             })
     }
 }
@@ -49,11 +46,16 @@ export const mutations = {
     storeUser (state, data) {
       state.user = data
     },
-    setToken (state, data) {
+    setToken (state,data) {
         state.authToken = data
         this.$cookies.set('authToken', data, { path: '/', maxAge: 60 * 60 * 24 * 7 })
     },
-    checkToken(state){
+    checkToken (state){
         state.authToken = this.$cookies.get('authToken') ? this.$cookies.get('authToken') : null;
-    }
+    },
+    removeToken (state) {
+        this.$cookies.remove('authToken')
+        state.authToken = null
+        console.log(this.$cookies.get('authToken'))
+    },
   }
