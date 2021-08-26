@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 16:20:55
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 00:38:18
+ * @LastEditTime: 2021-08-27 00:40:00
  */
 export const state = () => ({
     user: null,
@@ -40,7 +40,7 @@ export const actions = {
         await this.$axios.post('/logout', details)
             .then(function () {
                 commit('storeUser', null)
-                commit('storeToken', null)
+                commit('setToken', null)
             })
     }
 }
