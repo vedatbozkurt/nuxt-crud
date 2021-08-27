@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 15:53:51
+ * @LastEditTime: 2021-08-27 16:14:16
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -60,8 +60,8 @@
                 @click.prevent="deleteIban(iban.id)"
                 >Delete</button
               >
-              <a
-                href="#"
+              <NuxtLink
+                :to="'/ibans/'+iban.id+'/edit'"
                 class="
                   text-grey-lighter
                   font-bold
@@ -72,8 +72,7 @@
                   bg-blue
                   hover:bg-blue-dark
                 "
-                >Edit</a
-              >
+                >Edit</NuxtLink>
             </td>
           </tr>
         </tbody>
