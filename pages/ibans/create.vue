@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 20:41:06
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 16:27:20
+ * @LastEditTime: 2021-08-27 17:12:33
 -->
 <template>
   <div class="container">
@@ -48,7 +48,7 @@
             border-2
             outline-none
           "
-          v-model="form.status_id"
+          v-model="form.status"
         >
           <option selected disabled>Status</option>
           <option value="10">Aktif</option>
@@ -101,7 +101,7 @@ export default {
     return {
       form: {
         iban_no: "",
-        status_id: 10,
+        status: 10,
         default: false,
       },
     };

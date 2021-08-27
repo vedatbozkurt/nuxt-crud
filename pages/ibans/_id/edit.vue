@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 20:41:06
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 16:24:51
+ * @LastEditTime: 2021-08-27 17:07:56
 -->
 <template>
   <div class="container">
@@ -23,7 +23,7 @@
         <p class="mb-5 text-3xl uppercase text-gray-600">Edit İban</p>
         <input
           type="text"
-          v-model="singleIban.iban_no"
+          v-model="myiban.iban_no"
           class="
             mb-5
             p-3
@@ -48,7 +48,7 @@
             border-2
             outline-none
           "
-          v-model="singleIban.status_id"
+          v-model="myiban.status_id"
         >
           <option disabled>Status</option>
           <option value="10">Aktif</option>
@@ -57,7 +57,7 @@
 
         <label class="flex items-center dark:text-gray-400">
           <input
-            v-model="singleIban.default"
+            v-model="myiban.default"
             type="checkbox"
             class="
               text-green-600
@@ -99,23 +99,22 @@ export default {
   // middleware: 'guest',
   data() {
     return {
-      form: {
-        iban_no: "",
-        status: 0,
-        default: false,
-      },
     };
   },
   computed: {
-    ...mapGetters("iban", ["singleIban"])
+    myiban () {
+      return {...this.$store.state.iban.iban}
+    }
   },
   created() {
       this.fetchIban(this.$route.params.id);
+
   },
   methods: {
     ...mapActions("iban", ["fetchIban", "updateIban"]),
     ibanUpdate: function () {
-      this.updateIban(this.form).then(() => {
+        console.log(this.myiban)
+      this.updateIban(this.myiban).then(() => {
         this.$router.push("/");
       });
     },
