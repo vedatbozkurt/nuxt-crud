@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 00:43:37
+ * @LastEditTime: 2021-08-27 14:48:25
 -->
 <template>
   <div class="container">
@@ -105,6 +105,7 @@
 
 <script>
 export default {
+    middleware: 'authenticated',
   data() {
     return {
       new_todo: "yeni not",

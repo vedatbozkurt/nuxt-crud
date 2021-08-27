@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-27 00:40:32
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 01:12:16
+ * @LastEditTime: 2021-08-27 14:49:17
 -->
 <template>
     <nav id="header" class="w-full z-30 py-1 bg-white shadow-lg border-b border-blue-400">
@@ -21,6 +21,7 @@
                <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
                   <li><NuxtLink class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" to="/">Home</NuxtLink></li>
                   <li><NuxtLink class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" to="/ibans">Ibans</NuxtLink></li>
+                  <li><NuxtLink class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" to="/todos">Todos</NuxtLink></li>
                </ul>
             </nav>
          </div>
