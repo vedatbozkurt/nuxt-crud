@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 16:20:55
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 14:49:50
+ * @LastEditTime: 2021-08-27 14:55:58
  */
 export const state = () => ({
     user: null,
@@ -50,7 +50,9 @@ export const mutations = {
         this.$cookies.set('authToken', data, { path: '/', maxAge: 60 * 60 * 24 * 7 })
     },
     checkToken (state){
-        state.authToken = this.$cookies.get('authToken') ? this.$cookies.get('authToken') : null;
+        if(!state.authToken) {
+            state.authToken = this.$cookies.get('authToken') ? this.$cookies.get('authToken') : null;
+        }
     },
     removeToken (state) {
         this.$cookies.remove('authToken')
