@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 15:49:11
+ * @LastEditTime: 2021-08-27 15:53:51
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -57,7 +57,7 @@
                   bg-green
                   hover:bg-green-dark
                 "
-                @click.prevent="deletePost(iban.id)"
+                @click.prevent="deleteIban(iban.id)"
                 >Delete</button
               >
               <a
@@ -99,11 +99,6 @@ export default {
   },
   methods: {    
      ...mapActions("iban", ["deleteIban","fetchIbans"]),
-     removeTodo: function() {
-      this.deleteIban(this.admin).then(() => {
-        // this.myToast('success','Profile has been updated.');
-      });
-    },
   },
   created() {
     this.fetchIbans();
