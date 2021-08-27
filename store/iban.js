@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:24:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 17:09:46
+ * @LastEditTime: 2021-08-27 17:15:19
  */
 export const state = () => ({
     ibans: [],
@@ -33,6 +33,7 @@ export const actions = {
         commit('setIban', response.data);
     },
     async updateIban({ commit }, iban) {
+        iban.status = iban.status_id;
         const response = await this.$axios.put(`/iban/${iban.id}`, iban)
         .then((response) => {
             // commit('updateSingleIban', response.data);
