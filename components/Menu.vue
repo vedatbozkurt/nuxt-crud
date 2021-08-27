@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-27 00:40:32
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 01:09:56
+ * @LastEditTime: 2021-08-27 01:12:16
 -->
 <template>
     <nav id="header" class="w-full z-30 py-1 bg-white shadow-lg border-b border-blue-400">
@@ -46,7 +46,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$store.state.auth.authToken)
     // if (this.$cookies.get('authToken')) {
     //   console.log('dans')
     // }
