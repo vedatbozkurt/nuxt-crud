@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 15:47:14
+ * @LastEditTime: 2021-08-27 15:49:11
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -42,8 +42,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="hover:bg-grey-lighter">
-            <td class="py-4 px-6 border-b border-grey-light">New York</td>
+          <tr class="hover:bg-grey-lighter" v-for="iban in allIbans" :key="iban.id">
+            <td class="py-4 px-6 border-b border-grey-light">{{ iban.iban_no }}</td>
             <td class="py-4 px-6 border-b border-grey-light">
               <button
                 type="button" 
@@ -57,7 +57,7 @@
                   bg-green
                   hover:bg-green-dark
                 "
-                @click.prevent="deletePost(post.id)"
+                @click.prevent="deletePost(iban.id)"
                 >Delete</button
               >
               <a

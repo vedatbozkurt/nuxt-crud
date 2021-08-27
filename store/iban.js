@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:24:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 14:39:51
+ * @LastEditTime: 2021-08-27 15:51:17
  */
 export const state = () => ({
     ibans: [],
@@ -22,7 +22,7 @@ export const getters = {
 export const actions = {
     async fetchIbans({ commit }) {
         const response = await this.$axios.get('/iban');
-        commit('setIbans', response.data);
+        commit('setIbans', response.data.ibans.data);
     },
     async addIban({ commit }, iban) {
         const response = await this.$axios.post('/iban/store', iban);
