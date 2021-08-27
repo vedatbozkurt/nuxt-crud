@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 16:14:16
+ * @LastEditTime: 2021-08-27 16:26:34
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -37,6 +37,32 @@
                 border-b border-grey-light
               "
             >
+              Status
+            </th>
+            <th
+              class="
+                py-4
+                px-6
+                bg-grey-lightest
+                font-bold
+                uppercase
+                text-sm text-grey-dark
+                border-b border-grey-light
+              "
+            >
+              Default
+            </th>
+            <th
+              class="
+                py-4
+                px-6
+                bg-grey-lightest
+                font-bold
+                uppercase
+                text-sm text-grey-dark
+                border-b border-grey-light
+              "
+            >
               Actions
             </th>
           </tr>
@@ -44,6 +70,8 @@
         <tbody>
           <tr class="hover:bg-grey-lighter" v-for="iban in allIbans" :key="iban.id">
             <td class="py-4 px-6 border-b border-grey-light">{{ iban.iban_no }}</td>
+            <td class="py-4 px-6 border-b border-grey-light">{{ iban.status_id }}</td>
+            <td class="py-4 px-6 border-b border-grey-light">{{ iban.default }}</td>
             <td class="py-4 px-6 border-b border-grey-light">
               <button
                 type="button" 
