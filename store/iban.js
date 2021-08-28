@@ -3,20 +3,18 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:24:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 17:15:19
+ * @LastEditTime: 2021-08-28 12:46:11
  */
 export const state = () => ({
+    errors: [],
     ibans: [],
     iban: {}
 });
 
 export const getters = {
-    allIbans(state) {
-        return state.ibans
-    },
-    singleIban(state) {
-        return state.iban
-    }
+    allIbans(state) { return state.ibans },
+    singleIban(state) { return state.iban },
+    errors: state => state.errors
 };
 
 export const actions = {
@@ -25,7 +23,16 @@ export const actions = {
         commit('setIbans', response.data.ibans.data);
     },
     async addIban({ commit }, iban) {
-        const response = await this.$axios.post('/iban/store', iban);
+        const response = await this.$axios.post('/iban/store', iban)
+        .then((response) => {
+            this.$router.push("/");
+            // commit('updateSingleIban', response.data);
+        })
+        .catch(error => {
+          if (error.response.data.errors) {
+            commit('setErrors', error.response.data.errors);
+          }
+        });
         // commit('newIban', response.data);
     },
     async fetchIban({ commit }, ibanid) {
@@ -39,10 +46,10 @@ export const actions = {
             // commit('updateSingleIban', response.data);
         })
         .catch(error => {
-            console.log(error.response)
-        //   if (error.response.data.errors) {
-        //     this.errors = error.response.data.errors;
-        //   }
+            // console.log(error.response)
+          if (error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
         });
     },
     async deleteIban({ commit }, id) {
@@ -53,6 +60,7 @@ export const actions = {
 
 
 export const mutations = {
+    setErrors(state, errors) { state.errors = errors },
     setIbans(state, ibans) { state.ibans = ibans },
     setIban(state, iban) { state.iban = iban },
     // newIban(state, iban) { state.ibans.unshift(iban) },

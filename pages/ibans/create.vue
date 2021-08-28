@@ -3,11 +3,17 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 20:41:06
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 17:12:33
+ * @LastEditTime: 2021-08-28 12:49:32
 -->
 <template>
   <div class="container">
     <div class="w-screen h-screen flex justify-center items-center bg-gray-100">
+      <div class="bg-red-500" v-if="errors.iban_no">
+              {{ errors.iban_no[0] }}
+       </div>
+      <div class="bg-red-500" v-if="errors.status">
+              {{ errors.status[0] }}
+       </div>
       <form
         class="
           p-10
@@ -50,7 +56,7 @@
           "
           v-model="form.status"
         >
-          <option selected disabled>Status</option>
+          <option value="" >Status</option>
           <option value="10">Aktif</option>
           <option value="11">Aktif Değil</option>
         </select>
@@ -92,7 +98,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   middleware: "authenticated",
@@ -109,12 +115,16 @@ export default {
   created() {
     //   this.sendLoginRequest();
   },
+  computed: {
+    ...mapGetters({ errors: 'iban/errors' })
+  },
+  mounted() {
+    this.$store.commit("iban/setErrors", {}); // hataları sıfırla
+  },
   methods: {
     ...mapActions("iban", ["addIban"]),
     createIban: function () {
-      this.addIban(this.form).then(() => {
-        this.$router.push("/");
-      });
+      this.addIban(this.form).then(() => {});
     },
   },
 };
