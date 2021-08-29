@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:24:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-28 12:46:11
+ * @LastEditTime: 2021-08-29 13:57:58
  */
 export const state = () => ({
     errors: [],
@@ -46,7 +46,6 @@ export const actions = {
             // commit('updateSingleIban', response.data);
         })
         .catch(error => {
-            // console.log(error.response)
           if (error.response.data.errors) {
             this.errors = error.response.data.errors;
           }
@@ -58,18 +57,10 @@ export const actions = {
     },
 };
 
-
 export const mutations = {
     setErrors(state, errors) { state.errors = errors },
     setIbans(state, ibans) { state.ibans = ibans },
     setIban(state, iban) { state.iban = iban },
-    // newIban(state, iban) { state.ibans.unshift(iban) },
-    // updateSingleIban: (state, updIban) => {
-    //     const index = state.ibans.findIndex(iban => iban.id === updIban.id);
-    //     if (index !== -1) {
-    //         state.ibans.splice(index, 1, updIban);
-    //     }
-    // },
     removeIban(state, id) {
         let i = state.ibans.map(item => item.id).indexOf(id);
         state.ibans.splice(i, 1)
