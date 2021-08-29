@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 16:26:34
+ * @LastEditTime: 2021-08-29 21:31:05
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -68,13 +68,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="hover:bg-grey-lighter" v-for="iban in allIbans" :key="iban.id">
-            <td class="py-4 px-6 border-b border-grey-light">{{ iban.iban_no }}</td>
-            <td class="py-4 px-6 border-b border-grey-light">{{ iban.status_id }}</td>
-            <td class="py-4 px-6 border-b border-grey-light">{{ iban.default }}</td>
+          <tr
+            class="hover:bg-grey-lighter"
+            v-for="iban in allIbans"
+            :key="iban.id"
+          >
+            <td class="py-4 px-6 border-b border-grey-light">
+              {{ iban.iban_no }}
+            </td>
+            <td class="py-4 px-6 border-b border-grey-light">
+              {{ iban.status_id }}
+            </td>
+            <td class="py-4 px-6 border-b border-grey-light">
+              {{ iban.default }}
+            </td>
             <td class="py-4 px-6 border-b border-grey-light">
               <button
-                type="button" 
+                type="button"
                 class="
                   text-grey-lighter
                   font-bold
@@ -85,11 +95,12 @@
                   bg-green
                   hover:bg-green-dark
                 "
-                @click.prevent="deleteIban(iban.id)"
-                >Delete</button
+                @click.prevent="confirmDelete(iban.id)"
               >
+                Delete
+              </button>
               <NuxtLink
-                :to="'/ibans/'+iban.id+'/edit'"
+                :to="'/ibans/' + iban.id + '/edit'"
                 class="
                   text-grey-lighter
                   font-bold
@@ -100,7 +111,8 @@
                   bg-blue
                   hover:bg-blue-dark
                 "
-                >Edit</NuxtLink>
+                >Edit</NuxtLink
+              >
             </td>
           </tr>
         </tbody>
@@ -122,10 +134,28 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("iban", ["allIbans"])
+    ...mapGetters("iban", ["allIbans"]),
   },
-  methods: {    
-     ...mapActions("iban", ["deleteIban","fetchIbans"]),
+  methods: {
+    ...mapActions("iban", ["deleteIban", "fetchIbans"]),
+    confirmDelete(id) {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteIban(id);
+          this.$swal("Deleted!", "Your file has been deleted.", "success");
+        }
+      });
+    },
+  },
+  mounted() {
+    this.$sweetalert('mounted')
+    // will console.log 'Hello mounted!'
   },
   created() {
     this.fetchIbans();

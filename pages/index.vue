@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 14:46:46
+ * @LastEditTime: 2021-08-29 21:17:23
 -->
 <template>
   <div class="container">
@@ -22,6 +22,7 @@ export default {
   methods: {
   },
   created() {
+    
   }
 };
 </script>

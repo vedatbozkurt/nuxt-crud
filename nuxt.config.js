@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 00:29:26
+ * @LastEditTime: 2021-08-29 21:28:38
  */
 export default {
   ssr: true,
@@ -31,7 +31,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    "~/plugins/axios.js",
+    '~/plugins/axios.js',
+    '~/plugins/sweetalert.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -47,12 +48,19 @@ export default {
   modules: [
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
+    'vue-sweetalert2/nuxt',
   ],
 
   //Axios module configuration
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: process.env.USER_BACKEND_ENDPOINT
+  },
+
+  //sweetalert module configuration
+  sweetalert: {
+    confirmButtonColor: '#41b882',
+    cancelButtonColor: '#ff7674',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
