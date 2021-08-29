@@ -3,11 +3,17 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 20:41:06
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 17:07:56
+ * @LastEditTime: 2021-08-29 19:52:03
 -->
 <template>
   <div class="container">
     <div class="w-screen h-screen flex justify-center items-center bg-gray-100">
+      <div class="bg-red-500" v-if="errors.iban_no">
+              {{ errors.iban_no[0] }}
+       </div>
+      <div class="bg-red-500" v-if="errors.status">
+              {{ errors.status[0] }}
+       </div>
       <form
         class="
           p-10
@@ -102,21 +108,21 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({ errors: 'iban/errors' }),
     myiban () {
       return {...this.$store.state.iban.iban}
     }
   },
   created() {
       this.fetchIban(this.$route.params.id);
-
+  },
+  mounted() {
+    this.$store.commit("iban/setErrors", {});
   },
   methods: {
     ...mapActions("iban", ["fetchIban", "updateIban"]),
     ibanUpdate: function () {
-        console.log(this.myiban)
-      this.updateIban(this.myiban).then(() => {
-        this.$router.push("/");
-      });
+      this.updateIban(this.myiban).then(() => {});
     },
   },
 };

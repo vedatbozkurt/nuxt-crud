@@ -3,11 +3,12 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 20:41:06
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-28 12:49:32
+ * @LastEditTime: 2021-08-29 19:47:34
 -->
 <template>
   <div class="container">
     <div class="w-screen h-screen flex justify-center items-center bg-gray-100">
+      {{ errors }}
       <div class="bg-red-500" v-if="errors.iban_no">
               {{ errors.iban_no[0] }}
        </div>
