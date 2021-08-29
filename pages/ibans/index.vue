@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-29 21:31:05
+ * @LastEditTime: 2021-08-29 21:34:54
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -154,7 +154,7 @@ export default {
     },
   },
   mounted() {
-    this.$sweetalert('mounted')
+    this.$sweetalert('mounted','mounted2')
     // will console.log 'Hello mounted!'
   },
   created() {
