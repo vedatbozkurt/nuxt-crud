@@ -3,9 +3,10 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 16:20:55
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 14:55:58
+ * @LastEditTime: 2021-08-29 20:06:30
  */
 export const state = () => ({
+    errors: [],
     user: null,
     authToken: null,
 });
@@ -13,7 +14,8 @@ export const state = () => ({
 export const getters = {
     getUser: (state) => {
         return state.user
-    }
+    },
+    errors: state => state.errors
 }
 export const actions = {
     async loadUser({ commit }) {
@@ -27,10 +29,16 @@ export const actions = {
     },
     loginUser({ commit }, details) {
         this.$axios.post('/login', details)
-            .then(function (resp) {
-                commit('storeUser', resp.data.data.name)
-                commit('setToken', resp.data.data.token)
+        .then((response) => {
+            commit('storeUser', response.data.data.name)
+            commit('setToken', response.data.data.token)
+            this.$router.push("/");
         })
+        .catch(error => {
+          if (error.response.data.errors) {
+            commit('setErrors', error.response.data.errors);
+          }
+        });
     },
     async logout({ commit }) {
         await this.$axios.post('/logout')
@@ -42,6 +50,7 @@ export const actions = {
 }
 
 export const mutations = {
+    setErrors(state, errors) { state.errors = errors },
     storeUser (state, data) {
       state.user = data
     },
