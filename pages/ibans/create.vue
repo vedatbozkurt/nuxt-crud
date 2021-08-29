@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 20:41:06
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-29 19:53:28
+ * @LastEditTime: 2021-08-29 20:07:32
 -->
 <template>
   <div class="container">
@@ -113,7 +113,7 @@ export default {
     };
   },
   created() {
-    //   this.sendLoginRequest();
+    //   
   },
   computed: {
     ...mapGetters({ errors: 'iban/errors' })

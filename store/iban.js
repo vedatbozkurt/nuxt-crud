@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 15:24:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-29 19:52:44
+ * @LastEditTime: 2021-08-29 20:11:46
  */
 export const state = () => ({
     errors: [],
@@ -23,7 +23,7 @@ export const actions = {
         commit('setIbans', response.data.ibans.data);
     },
     async addIban({ commit }, iban) {
-        const response = await this.$axios.post('/iban/store', iban)
+        await this.$axios.post('/iban/store', iban)
         .then((response) => {
             this.$router.push("/ibans");
         })
@@ -40,7 +40,7 @@ export const actions = {
     },
     async updateIban({ commit }, iban) {
         iban.status = iban.status_id;
-        const response = await this.$axios.put(`/iban/${iban.id}`, iban)
+        await this.$axios.put(`/iban/${iban.id}`, iban)
         .then((response) => {
             this.$router.push("/ibans");
         })
@@ -51,8 +51,16 @@ export const actions = {
         });
     },
     async deleteIban({ commit }, id) {
-        await this.$axios.delete(`/iban/${id}`);
-        commit('removeIban', id);
+        await this.$axios.delete(`/iban/${id}`)
+        .then((response) => {
+            commit('removeIban', id);
+        })
+        .catch(error => {
+          if (error.response.data.errors) {
+            commit('setErrors', error.response.data.errors);
+          }
+        });
+        
     },
 };
 
