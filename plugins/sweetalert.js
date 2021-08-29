@@ -3,9 +3,9 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-29 21:28:01
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 00:53:32
+ * @LastEditTime: 2021-08-30 00:55:31
  */
-export default ({ app: { $swal }}, inject) => {
+// export default ({ app: { $swal }}, inject) => {
     // Inject $hello(msg) in Vue, context and store.
     // inject('sweetalert', (del) => {
     //     $swal({
@@ -21,4 +21,4 @@ export default ({ app: { $swal }}, inject) => {
     //         }
     //       });
     // })
-}
+// }

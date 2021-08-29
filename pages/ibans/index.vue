@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 00:54:32
+ * @LastEditTime: 2021-08-30 00:56:10
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -128,9 +128,6 @@ export default {
   middleware: "authenticated",
   data() {
     return {
-      ibanList() {
-        // return this.$store.getters["iban/allIbans"];
-      },
     };
   },
   computed: {
