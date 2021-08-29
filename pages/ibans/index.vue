@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 00:56:10
+ * @LastEditTime: 2021-08-30 01:17:58
 -->
 <template>
   <div class="w-2/3 mx-auto">
@@ -136,20 +136,21 @@ export default {
   methods: {
     ...mapActions("iban", ["deleteIban", "fetchIbans"]),
     confirmDelete(id) {
+      this.$toast('error', 'Silme başarısız');
       // this.$sweetalert(this.deleteIban(id));
-      this.$swal({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              this.deleteIban(id);         
-              this.$swal("Deleted!", "Your file has been deleted.", "success");
-            }
-          });
-      
+      // this.$swal({
+      //       title: "Are you sure?",
+      //       text: "You won't be able to revert this!",
+      //       icon: "warning",
+      //       showCancelButton: true,
+      //       confirmButtonText: "Yes, delete it!",
+      //     }).then((result) => {
+      //       if (result.isConfirmed) {
+      //         this.deleteIban(id);         
+      //         this.$swal("Deleted!", "Your file has been deleted.", "success");
+      //       }
+      //     });
+     
     },
   },
   mounted() {

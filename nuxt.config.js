@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-29 21:28:38
+ * @LastEditTime: 2021-08-30 01:12:46
  */
 export default {
   ssr: true,
