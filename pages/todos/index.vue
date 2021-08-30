@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 14:48:25
+ * @LastEditTime: 2021-08-30 16:32:15
 -->
 <template>
   <div class="container">
@@ -20,7 +20,7 @@
     >
       <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
         <div class="mb-4">
-          <h1 class="text-grey-darkest">Todo List</h1>
+          <h1 class="text-grey-darkest">{{ $t('todo_list') }}</h1>
           <div class="flex mt-4">
             <input
               v-model="new_todo"
