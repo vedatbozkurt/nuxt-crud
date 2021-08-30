@@ -3,53 +3,188 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-27 00:40:32
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-27 14:49:17
+ * @LastEditTime: 2021-08-30 16:28:06
 -->
 <template>
-    <nav id="header" class="w-full z-30 py-1 bg-white shadow-lg border-b border-blue-400">
-      <div class="w-full flex items-center justify-between mt-0 px-6 py-2">
-         <label for="menu-toggle" class="cursor-pointer md:hidden block">
-            <svg class="fill-current text-blue-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-               <title>menu</title>
-               <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-            </svg>
-         </label>
-         <input class="hidden" type="checkbox" id="menu-toggle">
-         
-         <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
-            <nav>
-               <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
-                  <li><NuxtLink class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" to="/">Home</NuxtLink></li>
-                  <li><NuxtLink class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" to="/ibans">Ibans</NuxtLink></li>
-                  <li><NuxtLink class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" to="/todos">Todos</NuxtLink></li>
-               </ul>
-            </nav>
-         </div>
-         
-         <div class="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
-            <div class="auth flex items-center w-full md:w-full">
-               <NuxtLink v-if="!this.$store.state.auth.authToken" to="/login" class="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Sign in</NuxtLink>
+  <nav
+    id="header"
+    class="w-full z-30 py-1 bg-white shadow-lg border-b border-blue-400"
+  >
+    <div class="w-full flex items-center justify-between mt-0 px-6 py-2">
+      <label for="menu-toggle" class="cursor-pointer md:hidden block">
+        <svg
+          class="fill-current text-blue-600"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+        >
+          <title>menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+        </svg>
+      </label>
+      <input class="hidden" type="checkbox" id="menu-toggle" />
 
-               <button v-if="this.$store.state.auth.authToken" @click="sendLogoutRequest" class="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100">Logout</button>
-            </div>
-         </div>
+      <div
+        class="
+          hidden
+          md:flex
+          md:items-center
+          md:w-auto
+          w-full
+          order-3
+          md:order-1
+        "
+        id="menu"
+      >
+        <nav>
+          <ul
+            class="
+              md:flex
+              items-center
+              justify-between
+              text-base text-blue-600
+              pt-4
+              md:pt-0
+            "
+          >
+            <li>
+              <NuxtLink
+                class="
+                  inline-block
+                  no-underline
+                  hover:text-black
+                  font-medium
+                  text-lg
+                  py-2
+                  px-4
+                  lg:-ml-2
+                "
+                to="/"
+                >Home</NuxtLink
+              >
+            </li>
+            <li>
+              <NuxtLink
+                class="
+                  inline-block
+                  no-underline
+                  hover:text-black
+                  font-medium
+                  text-lg
+                  py-2
+                  px-4
+                  lg:-ml-2
+                "
+                to="/ibans"
+                >Ibans</NuxtLink
+              >
+            </li>
+            <li>
+              <NuxtLink
+                class="
+                  inline-block
+                  no-underline
+                  hover:text-black
+                  font-medium
+                  text-lg
+                  py-2
+                  px-4
+                  lg:-ml-2
+                "
+                to="/todos"
+                >Todos</NuxtLink
+              >
+            </li>
+            <li>
+              <NuxtLink
+                class="
+                  inline-block
+                  no-underline
+                  hover:text-black
+                  font-medium
+                  text-lg
+                  py-2
+                  px-4
+                  lg:-ml-2
+                "
+                v-for="locale in availableLocales"
+                :key="locale.code"
+                :to="switchLocalePath(locale.code)"
+                >{{ locale.name }}</NuxtLink
+              >
+            </li>
+          </ul>
+        </nav>
       </div>
-   </nav>
+
+      <div
+        class="
+          order-2
+          md:order-3
+          flex flex-wrap
+          items-center
+          justify-end
+          mr-0
+          md:mr-4
+        "
+        id="nav-content"
+      >
+        <div class="auth flex items-center w-full md:w-full">
+          <NuxtLink
+            v-if="!this.$store.state.auth.authToken"
+            to="/login"
+            class="
+              bg-transparent
+              text-gray-800
+              p-2
+              rounded
+              border border-gray-300
+              mr-4
+              hover:bg-gray-100
+              hover:text-gray-700
+            "
+            >Sign in</NuxtLink
+          >
+
+          <button
+            v-if="this.$store.state.auth.authToken"
+            @click="sendLogoutRequest"
+            class="
+              bg-blue-600
+              text-gray-200
+              p-2
+              rounded
+              hover:bg-blue-500
+              hover:text-gray-100
+            "
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
-    methods: {
+  methods: {
     ...mapActions("auth", ["logout"]),
     sendLogoutRequest() {
       this.logout();
       this.$router.push("/");
-        }
     },
-    mounted() {
+  },
+  computed: {
+    availableLocales() {
+      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale);
+    },
+  },
+  mounted() {
     // if (this.$cookies.get('authToken')) {
     //   console.log('dans')
     // }
   },
-}
+};
 </script>

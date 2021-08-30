@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 14:26:45
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 15:57:29
+ * @LastEditTime: 2021-08-30 16:27:41
 -->
 <template>
   <div class="container">
@@ -21,7 +21,8 @@ export default {
     };
   },
   computed: {
-},
+    //
+  },
   methods: {
   },
   created() {
