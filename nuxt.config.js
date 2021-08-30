@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 15:55:31
+ * @LastEditTime: 2021-08-30 16:18:21
  */
 export default {
   ssr: true,
@@ -65,21 +65,14 @@ export default {
   },
 
   i18n: {
-    locales: ['en', 'fr', 'tr'],
-    defaultLocale: 'tr',
+    locales: [
+      { code: 'en', iso: 'en-EN', file: 'en.json'},
+      { code: 'tr', iso: 'tr-TR', file: 'tr.json'},
+    ],
+    defaultLocale: process.env.VUE_APP_I18N_LOCALE || 'tr',
+    langDir: '~/locales/',
     vueI18n: {
-      fallbackLocale: 'en',
-      messages: {
-        en: {
-          welcome: 'Welcome'
-        },
-        fr: {
-          welcome: 'Bienvenue'
-        },
-        tr: {
-          welcome: 'Hoşgeldiniz'
-        }
-      }
+      fallbackLocale: process.env.VUE_APP_I18N_LOCALE || 'en',
     }
   },
 
