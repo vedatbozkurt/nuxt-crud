@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 17:04:58
+ * @LastEditTime: 2021-08-30 23:34:03
  */
 export default {
   ssr: true,
@@ -81,6 +81,12 @@ export default {
     vueI18n: {
       fallbackLocale: process.env.VUE_APP_I18N_LOCALE || 'tr',
     }
+  },
+
+  tailwindcss: {
+    jit: true,
+    // add '~tailwind.config` alias
+    exposeConfig: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

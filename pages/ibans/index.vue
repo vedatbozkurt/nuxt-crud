@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-26 14:58:41
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 01:22:15
+ * @LastEditTime: 2021-08-30 23:37:32
 -->
 <template>
   <div class="w-2/3 mx-auto">
