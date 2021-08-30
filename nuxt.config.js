@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 01:12:46
+ * @LastEditTime: 2021-08-30 15:55:31
  */
 export default {
   ssr: true,
@@ -47,6 +47,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/i18n',
     'cookie-universal-nuxt',
     'vue-sweetalert2/nuxt',
   ],
@@ -61,6 +62,25 @@ export default {
   sweetalert: {
     confirmButtonColor: '#41b882',
     cancelButtonColor: '#ff7674',
+  },
+
+  i18n: {
+    locales: ['en', 'fr', 'tr'],
+    defaultLocale: 'tr',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: {
+          welcome: 'Welcome'
+        },
+        fr: {
+          welcome: 'Bienvenue'
+        },
+        tr: {
+          welcome: 'Hoşgeldiniz'
+        }
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
