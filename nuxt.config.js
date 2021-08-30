@@ -3,7 +3,7 @@
  * @Email: info@wedat.org
  * @Date: 2021-08-24 15:04:39
  * @LastEditors: @vedatbozkurt
- * @LastEditTime: 2021-08-30 16:30:30
+ * @LastEditTime: 2021-08-30 17:04:58
  */
 export default {
   ssr: true,
@@ -65,6 +65,12 @@ export default {
   },
 
   i18n: {
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', 
+      alwaysRedirect: true
+    },
     locales: [
       { code: 'en', iso: 'en-EN', name: 'English', file: 'en.json'},
       { code: 'tr', iso: 'tr-TR', name: 'Türkçe', file: 'tr.json'},
